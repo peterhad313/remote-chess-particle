@@ -1,5 +1,12 @@
 #include "ui.h"
+//TODO debouncing
+
+
+//Holds Position in menuStrings of current menu status
 int menu;
+
+// Contains the full text of each menu item. Can be up to 16 chars.
+// If necessary this could be increased to 2 lines.
 extern char *menuStrings[] = {
   "1",    //0
   "1.1",   //1
@@ -10,6 +17,7 @@ extern char *menuStrings[] = {
   "2.1",   //6
   "3"};   //7
 
+//enum to make it easier to keep of the menu items. can be used in the change function
 enum menuItems {
   a1,
   a11,
@@ -20,6 +28,10 @@ enum menuItems {
   a21,
   a3
 };
+
+/*
+
+*/
 String getMenuString(){
   return menuStrings[menu];
 }
@@ -38,6 +50,7 @@ void setupButtonInterrupts(){
   attachInterrupt(D4, nextButton, RISING);
 }
 
+//state tranitions
 void upButton() {
     switch (menu) {
       case a1:

@@ -7,5 +7,6 @@ void upButton();
 void backButton();
 void downButton();
 void nextButton();
+void waitForButton();
 
 String getMenuString();

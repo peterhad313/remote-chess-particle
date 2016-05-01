@@ -41,7 +41,6 @@ int readReedSwitches(int numSensors) {
     digitalWrite(clockPin, 0);
     delayMicroseconds(1);
     temp = digitalRead(dataPin);
-    Serial.print(temp);
     if (temp) {
       //set the bit to 0 no matter what
       myDataIn = myDataIn | (1 << i);
@@ -50,8 +49,5 @@ int readReedSwitches(int numSensors) {
     delayMicroseconds(1);
 
   }
-  Serial.print("\nFinal: ");
-  Serial.print(myDataIn);
-  Serial.print("\n\n");
   return myDataIn;
 }

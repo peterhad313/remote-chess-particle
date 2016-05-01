@@ -1,10 +1,6 @@
 #include "ui.h"
-//TODO debouncing
-
-
 //Holds Position in menuStrings of current menu status
 int menu;
-int wait;
 
 // Contains the full text of each menu item. Can be up to 16 chars.
 // If necessary this could be increased to 2 lines.
@@ -16,8 +12,9 @@ extern char *menuStrings[] = {
   "1.2",  //4
   "2",    //5
   "2.1",   //6
-  "3"};   //7
+  "Read Sensors"};   //7
 
+String line2;
 //enum to make it easier to keep of the menu items. can be used in the change function
 enum menuItems {
   a1,
@@ -37,6 +34,10 @@ String getMenuString(){
   return menuStrings[menu];
 }
 
+String getLine2(){
+  return line2;
+}
+
 void setupButtonInterrupts(){
   pinMode(D7,INPUT_PULLDOWN);
   attachInterrupt(D7, upButton, RISING);
@@ -51,18 +52,9 @@ void setupButtonInterrupts(){
   attachInterrupt(D4, nextButton, RISING);
 }
 
-void waitForButton(){
-  while (wait == 1){
-    Serial.print("Waiting for button");
-    wait=0;
-    delay(100);
-  }
-  wait =1;
-}
 
 //state tranitions
 void upButton() {
-  wait = 0;
     switch (menu) {
       case a1:
         menu=a3;
@@ -89,7 +81,6 @@ void upButton() {
         menu = a21;
         break;
     }
-    delay(100);
 }
 
 void backButton() {
@@ -119,7 +110,6 @@ void backButton() {
       menu = a2;
       break;
   }
-  delay(100);
 }
 
 void downButton() {
@@ -149,7 +139,6 @@ void downButton() {
       menu = a21;
       break;
   }
-  delay(100);
 }
 
 void nextButton() {
@@ -161,6 +150,7 @@ void nextButton() {
       menu = a21;
       break;
     case a3:
+      line2= readReedSwitches(16);
       menu = a3;
       break;
     case a11:
@@ -179,5 +169,4 @@ void nextButton() {
       menu = a21;
       break;
   }
-  delay(100);
 }

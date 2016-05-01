@@ -1,4 +1,5 @@
 #include "application.h"
+#include "sensors.h"
 
 void setupButtonInterrupts();
 
@@ -7,6 +8,6 @@ void upButton();
 void backButton();
 void downButton();
 void nextButton();
-void waitForButton();
 
 String getMenuString();
+String getLine2();

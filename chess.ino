@@ -16,11 +16,14 @@ void setup() {
 
 void loop() {
 
-  switchVar1 = readReedSwitches(16);
+  //switchVar1 = readReedSwitches(16);
 
   lcd.clear();
-  Serial1.print(switchVar1,BIN);
+  Serial1.print(getMenuString());
+  Serial1.print("\n");
+  Serial1.print(getLine2());
+  //Serial.print("\n");
   delay(100);
-      //Serial1.print(getMenuString());
+
 	// Delay 500 milliseconds so it's not too fast
 }

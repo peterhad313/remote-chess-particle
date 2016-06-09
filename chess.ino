@@ -11,6 +11,7 @@ void setup() {
   setupButtonInterrupts();
   setupSensors();
 
+  setupMotion();
 
 }
 

@@ -1,6 +1,7 @@
 #include "Serial_LCD_SparkFun.h"
 #include "ui.h"
 #include "sensors.h"
+#include "motor.h"
 
 extern Serial_LCD_SparkFun lcd = Serial_LCD_SparkFun();
 
